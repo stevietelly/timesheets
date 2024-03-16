@@ -1,0 +1,15 @@
+.TableRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom:1px solid var(--grey-color) ;
+}
+
+.TableRow:hover{
+    background-color: var(--lighter-color);
+    filter: brightness(0.96);
+}
+.TableRow:active,
+.TableRow:focus{
+    background-color: var(--primary-lighter-color);
+}

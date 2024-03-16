@@ -1,0 +1,12 @@
+.button__name{
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.2s ease;
+    color: var(--primary-color);
+}
+.button__name:hover{
+    text-decoration: underline;
+    filter: brightness(1.2);
+    color: var(--primary-color);
+    
+}

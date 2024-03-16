@@ -1,0 +1,31 @@
+.Template {
+     background-color: var(--light-color);
+     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+     margin: 2px;
+     border-radius: 2px;
+     grid-column: 0 1;
+     height: 100%;
+     display: grid;
+     grid-template-rows: 80% 20%;
+     border: 1px solid transparent;
+     transition: 200ms ease-in-out;
+
+}
+.Template:focus,
+.Template:active,
+.Template:hover{
+  border-radius: 0px;
+  border: 1px solid var(--primary-color);
+}
+
+.Template:active + .template__top
+.Template:focus + .template__top
+.Template:hover + .template__top{
+  background-color: var(--primary-light-color);
+}
+.template__top{
+  position: relative;
+}
+/* .template__top .IconButton{
+ 
+} */

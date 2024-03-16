@@ -1,0 +1,22 @@
+.button__area{
+    border: 1px solid var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0.4em;
+    border-radius: 5px;
+    gap: 0.5em;
+    transition: 0.2 ease;
+    background-color: transparent;
+}
+.button__area:hover{
+    border: 1px solid var(--primary-dark-color);
+    background-color: var(--primary-lighter-color);
+    transition: 0.2s ease;
+}
+.button__icon svg{
+    height: 1em;
+    width: 1em;
+}

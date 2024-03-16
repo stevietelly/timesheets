@@ -1,0 +1,29 @@
+.IconButton{
+    border-radius: 3px;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.8em;
+    width: 1.8em;
+    margin: 1px;
+    transition: 200ms ease-in-out;
+    z-index: 0;
+    
+}
+.IconButton:hover{
+    background-color: var(--lighter-color);
+    filter: brightness(1);
+    transition: 200ms ease-in-out;
+
+}
+.IconButton:active,
+.IconButton:focus{
+   transition-duration: 30s;
+    background-color: var(--primary-lighter-color) ;
+    transition: 200ms ease-in-out;
+}
+.IconButton svg{
+    height: 1.5em;
+    width: 1.5em;
+}

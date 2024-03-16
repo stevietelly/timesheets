@@ -1,0 +1,47 @@
+/* Displays */
+.flex {
+  display: flex;
+}
+.justify-center {
+  justify-content: center;
+}
+.align-center {
+  align-items: center;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Colors */
+.color-primary {
+  color: var(--primary-color);
+}
+.color-primary-light {
+  color: var(--primary-light-color);
+}
+.color-dark {
+  color: var(--dark-color);
+}
+.color-light {
+  color: var(--light-color);
+  text-shadow: #333;
+}
+.color-lighter {
+  color: var(--lighter-color);
+}
+.color-lightest {
+  color: var(--lightest-color);
+}
+.color-grey {
+  color: var(--grey-color);
+}
+
+/* Background Color */
+.background-primary{
+  background-color: var(--primary-color);
+}
+.background-primary-light{
+  background-color: var(--primary-light-color);
+}

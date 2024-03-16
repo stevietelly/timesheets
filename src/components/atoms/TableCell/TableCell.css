@@ -1,0 +1,5 @@
+.TableCell{
+    color: var(--primary-color);
+    padding: 2px;
+    margin: 2px;
+}
