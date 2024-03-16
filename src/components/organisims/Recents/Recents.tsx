@@ -18,7 +18,6 @@ const Recents =  () => {
   // RecentsDatabase.insertOne("b", "Kisii University");
   // RecentsDatabase.insertOne("c", "Nairobi University");
  
-  // eslint-disable-next-line @typescript-eslint/no-redeclare
   
   // console.log(RecentsDatabase.getAll())
   console.log(RecentsDatabase.getAll())
