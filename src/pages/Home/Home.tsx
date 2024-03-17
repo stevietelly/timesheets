@@ -9,9 +9,13 @@ import TemplateHolder from '../../components/molecules/TemplateHolder/TemplateHo
 import Recents from '../../components/organisims/Recents/Recents';
 import Popup from '../../components/atoms/Popup/Popup';
 import TextInput from '../../components/atoms/TextInput/TextInput';
+import Button from '../../components/atoms/Button/Button';
+import IconButton from '../../components/atoms/IconButton/IconButton';
+import FolderIcon from '../../icons/FolderIcon';
+import Textarea from '../../components/atoms/Textarea/Textarea';
 
 const Home = (props: any) => {
-  const templates: Array<Object> = [{ "title": "Kenyan Highschool Timetable" }, {"title": "Random Generator Timetable" }, {"title": "Kenyan University Timetable"}, {"title": "Generic Timesheet"}]
+  const templates: Array<Object> = [{ "title": "Kenyan Highschool Timetable" }, { "title": "Random Generator Timetable" }, { "title": "Kenyan University Timetable" }, { "title": "Generic Timesheet" }]
   const [date, setCurrentDate]: [Date, React.Dispatch<React.SetStateAction<Date>>] = useState(new Date());
   // Popup
   const [isOpen, setOpen]: [boolean, React.Dispatch<React.SetStateAction<boolean>>] = useState(false);
@@ -21,13 +25,14 @@ const Home = (props: any) => {
   return (
     <div className='Home'>
       <Popup isOpen={isOpen} setOpen={setOpen} title="New Timesheet">
-        <TextInput label="Timesheet Title"/>
+     
+      <PopupContents setOpen={setOpen}></PopupContents>
       </Popup>
       <Card>
         <div className='flex' style={{ justifyContent: "space-between" }}>
           <div className='color-primary' style={{ display: "inline-flex", gap: "10px" }}><TimesheetsIcon /> <h1>Timesheets</h1></div>
           <div className='flex-center' style={{ gap: "10px" }}>
-            <IconLabelButton name="New Timesheet" onClick={()=>setOpen(true)} icon={<PlusIcon color="white" />} style={{ backgroundColor: "#F64848", color: "white" }} />
+            <IconLabelButton name="New Timesheet" onClick={() => setOpen(true)} icon={<PlusIcon color="white" />} style={{ backgroundColor: "#F64848", color: "white" }} />
             <HyperlinkButton name="Open Timesheet" />
 
           </div>
@@ -43,16 +48,39 @@ const Home = (props: any) => {
 
           </div>
         </div>
-
-
       </Card>
       <Card height={"100%"}>
         <TemplateHolder data={templates} />
-        <Recents/>
+        <Recents />
       </Card>
-     
+
     </div>
   )
 }
 
+function PopupContents(props: {setOpen: React.Dispatch<React.SetStateAction<boolean>>}){
+  const [titleValue, setTitleValue] = useState("");
+  const [pathValue, setPathValue] = useState("");
+  const [facilityName, setFacilityName] = useState("");
+  const [notes, setNotes] = useState("");
+  const confirmValues = () =>{console.log(titleValue, pathValue)}
+return(
+  <div style={{ height: "100%" }}>
+    <div className="top" style={{ height: "90%" }}>
+      <TextInput label="Timesheet Title" setValue={setTitleValue}/>
+      <TextInput label="Facility Name" setValue={setFacilityName} optional/>
+      <div style={{ display: "grid", gridTemplateColumns: "94% 6%", width: "500px" }}><TextInput width='450px' label="File Location" setValue={setPathValue}/>
+
+        <div className="flex-center"><IconButton icon={<FolderIcon />} /></div></div>
+
+
+      <Textarea label='Notes' setNotes={setNotes} optional/>
+    </div>
+    <div className="bottom flex" style={{ float: "right", height: "10%" }}>
+      <Button name="Cancel" onClick={() => props.setOpen(false)} />
+      <Button name="Proceed" onClick={() => {confirmValues()}} />
+    </div>
+  </div>
+)
+}
 export default Home

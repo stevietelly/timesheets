@@ -1,0 +1,29 @@
+.Button{
+    border-radius: 2px;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    margin: 1px;
+    transition: 200ms ease-in-out;
+    outline: none;
+    border: 1px transparent solid;
+    color: var(--light-color);
+    background-color: var(--primary-color);
+    cursor: pointer;
+    
+}
+.Button:hover{
+    background-color: var(--light-color);
+    filter: brightness(1);
+    transition: 200ms ease-in-out;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+
+}
+.Button:active{
+   transition-duration: 30s;
+    background-color: var(--primary-lighter-color) ;
+    transition: 200ms ease-in-out;
+}

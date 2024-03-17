@@ -4,16 +4,20 @@ import XIcon from '../../../icons/XIcon';
 import IconButton from '../IconButton/IconButton';
 
 
-const Popup = (props: { isOpen: boolean, setOpen: React.Dispatch<React.SetStateAction<boolean>>, children: React.ReactNode, title: string }) => {
+const Popup = (props: { isOpen: boolean, setOpen: React.Dispatch<React.SetStateAction<boolean>>, children: React.ReactNode, title: string, backgroundExit?: boolean}) => {
+    // BUGFIX: Children Elements to backdrop uninteneded exit
     if (!props.isOpen) return null;
-
+    const backdropInitiatedExit = () => {if(props.backgroundExit){props.setOpen(false)}}
    
     return (
-        <div className="popup-backdrop">
+        <div className="popup-backdrop" onClick={()=>backdropInitiatedExit()}>
             <div className={`popup ${props.isOpen ? 'show' : ''}`} id="popup">
                 <div className="popup-top" >
+                    <div className="popup-title">
                     <h2 className='color-primary' style={{textDecoration: "none"}}>{props.title}</h2>
-                    <IconButton icon={<XIcon />} style={{ position: "absolute", right: "2px" }} onClick={() => props.setOpen(false)} />
+                    </div>
+                    
+                    <IconButton icon={<XIcon />} style={{ position: "absolute", right: "2px", top: "2px"}} onClick={() => props.setOpen(false)} />
 
                 </div>
                 <div className="popup-bottom">
@@ -24,6 +28,8 @@ const Popup = (props: { isOpen: boolean, setOpen: React.Dispatch<React.SetStateA
         </div>
     )
 }
+
+
 
 export default Popup;
 

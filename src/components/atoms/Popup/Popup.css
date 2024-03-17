@@ -45,7 +45,12 @@
 .popup-top{
   display: flex;
   padding-left: 10px;
+  align-items: center;
+  height: 10%;
 }
+
+
 .popup-bottom{
   padding: 10px;
+  height: 90%;
 }

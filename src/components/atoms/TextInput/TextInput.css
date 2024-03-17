@@ -1,42 +1,53 @@
-.text-input-holder{
+.text-input-area{
     position: relative;
-    height: 80px;
-    line-height: 45px;
+    height: 45px;
+    margin: 5px;
+    margin-bottom: 15px;
 }
-.text-input{
-    position: absolute;
-    outline: none;
-    font-size: 2.2.em;
-    padding: 0 15px;
-    line-height: 45px;
-    border-radius: 2px;
-    border: 1.2px solid var(--grey-color);
-    background: transparent;
-    transition: 0.1s ease;
-    z-index: 11111;
-}
-.text-label{
-    position: absolute;
-    font-size: 0.9em;
-    color: var(--primary-color);
-    padding: 0 5px;
-    margin: 0 10px;
-    /* background-color: ; */
-    transition: 0.2s ease;
-}
-.text-input:focus,
-.text-input:valid{
-    color: var(--grey-color);
+.text-input-area input{
+    height: 100%;
+    width: 100%;
     border: none;
-    border-radius: 0;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 1.5px solid silver;
+    padding: 10px;
+    color: var(--grey-color);
+    outline: none;
+    font-size: 17px;
 }
-.text-input:focus + .text-label,
-.text-input:valid + .text-label{
+.text-input-label{
+    position: absolute;
+    left: 0;
+    bottom: 13px;
+    font-size: 16px;
+    padding-left: 10px;
+    color: var(--grey-color);
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+.text-input-area input:focus ~ .text-input-label,
+.text-input-area input:valid ~ .text-input-label{
     color: var(--primary-color);
-    height: 30px;
-    line-height: 20px;
-    padding: 0 12px;
-    transform: translate(-15px, -16px) scale(0.88);
-    z-index: 1111;
+    transform: translateY(-20px);
+    font-size: 9px;
+}
+.text-input-area input + .text-input-underline{
+    position: absolute;
+    bottom: 0;
+    height: 1.5px;
+    width: 100%;
+   
+}
+
+.text-input-area input + .text-input-underline::before{
+    position: absolute;
+    content: "";
+    background-color: var(--primary-color);
+    height: 1.5px;
+    transform: scaleX(0);
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+.text-input-area input:focus ~ .text-input-underline::before,
+.text-input-area input:valid ~ .text-input-underline::before{
+    transform: scaleX(1);
 }

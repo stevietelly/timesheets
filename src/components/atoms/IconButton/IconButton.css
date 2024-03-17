@@ -9,6 +9,7 @@
     margin: 1px;
     transition: 200ms ease-in-out;
     z-index: 0;
+
     
 }
 .IconButton:hover{
@@ -26,4 +27,5 @@
 .IconButton svg{
     height: 1.5em;
     width: 1.5em;
+    color: var(--grey-color);
 }

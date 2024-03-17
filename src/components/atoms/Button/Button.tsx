@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
+import "./Button.css";
 
-const Button = (props: any) => {
+const Button = (props: {name: string, width?: string, onClick: React.MouseEventHandler}) => {
+  var width = "150px"
   return (
- <button>
+ <button className='Button' style={{width: width}} onClick={props.onClick}>
   {props.name}
  </button>
   )
