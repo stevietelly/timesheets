@@ -13,20 +13,26 @@ import Button from '../../components/atoms/Button/Button';
 import IconButton from '../../components/atoms/IconButton/IconButton';
 import FolderIcon from '../../icons/FolderIcon';
 import Textarea from '../../components/atoms/Textarea/Textarea';
+import {FileCreator, showOpenDialog} from '../../assets/Filehandling';
+import DisabledScreen from '../../components/atoms/DisabledScreen/DisabledScreen';
 
 const Home = (props: any) => {
   const templates: Array<Object> = [{ "title": "Kenyan Highschool Timetable" }, { "title": "Random Generator Timetable" }, { "title": "Kenyan University Timetable" }, { "title": "Generic Timesheet" }]
   const [date, setCurrentDate]: [Date, React.Dispatch<React.SetStateAction<Date>>] = useState(new Date());
   // Popup
   const [isOpen, setOpen]: [boolean, React.Dispatch<React.SetStateAction<boolean>>] = useState(false);
+  // DisabledScreen
+  const [screenDisabled, setScreenDisabled] = useState(false);
+
 
   var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sartuday"];
   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   return (
     <div className='Home'>
-      <Popup isOpen={isOpen} setOpen={setOpen} title="New Timesheet">
+      <DisabledScreen screenDisabled={screenDisabled} setScreenDisabled={setScreenDisabled}/>
+      <Popup isOpen={isOpen} setOpen={setOpen} title="New Timesheet" >
      
-      <PopupContents setOpen={setOpen}></PopupContents>
+      <PopupContents setOpen={setOpen} setScreenDisabled={setScreenDisabled}></PopupContents>
       </Popup>
       <Card>
         <div className='flex' style={{ justifyContent: "space-between" }}>
@@ -58,20 +64,36 @@ const Home = (props: any) => {
   )
 }
 
-function PopupContents(props: {setOpen: React.Dispatch<React.SetStateAction<boolean>>}){
+function PopupContents(props: {setOpen: React.Dispatch<React.SetStateAction<boolean>>, setScreenDisabled: React.Dispatch<React.SetStateAction<boolean>>}){
   const [titleValue, setTitleValue] = useState("");
   const [pathValue, setPathValue] = useState("");
   const [facilityName, setFacilityName] = useState("");
   const [notes, setNotes] = useState("");
-  const confirmValues = () =>{console.log(titleValue, pathValue)}
+  const [status, setStatus] = useState("");
+  const [selelctedFolder, setSelectedFolder] = useState("");
+  const getFolder = async () => {
+    props.setScreenDisabled(true)
+    const [canc, folder] = await showOpenDialog(setStatus, setSelectedFolder)
+    
+    setPathValue(folder)
+
+    props.setScreenDisabled(false)
+   
+
+  }
+  const confirmValues = () =>{
+    if (!titleValue){console.log("Title missing"); return}
+    if(!pathValue){console.log("Path Missing"); return}
+    FileCreator(pathValue+"\\"+titleValue, {})
+    console.log(titleValue, pathValue, pathValue)}
 return(
   <div style={{ height: "100%" }}>
     <div className="top" style={{ height: "90%" }}>
       <TextInput label="Timesheet Title" setValue={setTitleValue}/>
       <TextInput label="Facility Name" setValue={setFacilityName} optional/>
-      <div style={{ display: "grid", gridTemplateColumns: "94% 6%", width: "500px" }}><TextInput width='450px' label="File Location" setValue={setPathValue}/>
+      <div style={{ display: "grid", gridTemplateColumns: "94% 6%", width: "500px" }}><TextInput value={pathValue} width='450px' label="File Location" setValue={setPathValue}/>
 
-        <div className="flex-center"><IconButton icon={<FolderIcon />} /></div></div>
+        <div className="flex-center"><IconButton icon={<FolderIcon />} onClick={getFolder} /></div></div>
 
 
       <Textarea label='Notes' setNotes={setNotes} optional/>
