@@ -4,9 +4,11 @@ let WIN;
 function createWindow() {
   WIN = new BrowserWindow({
     frame: true,
-    fullscreen: true,
+    fullscreen: false,
+    show: false,
     webPreferences: {enableRemoteModule: true, nodeIntegration: true, contextIsolation: false}
   })
+  WIN.maximize()
   WIN.loadURL('http://localhost:3000')
 }
 ipcMain.handle('open-folder-dialog', async () => {
