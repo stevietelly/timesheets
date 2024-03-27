@@ -31,14 +31,13 @@ const Home = (props: any) => {
     <div className='Home'>
       <DisabledScreen screenDisabled={screenDisabled} setScreenDisabled={setScreenDisabled}/>
       <Popup isOpen={isOpen} setOpen={setOpen} title="New Timesheet" >
-     
       <PopupContents setOpen={setOpen} setScreenDisabled={setScreenDisabled}></PopupContents>
       </Popup>
       <Card>
         <div className='flex' style={{ justifyContent: "space-between" }}>
           <div className='color-primary' style={{ display: "inline-flex", gap: "10px" }}><TimesheetsIcon /> <h1>Timesheets</h1></div>
           <div className='flex-center' style={{ gap: "10px" }}>
-            <IconLabelButton name="New Timesheet" onClick={() => setOpen(true)} icon={<PlusIcon color="white" />} style={{ backgroundColor: "#F64848", color: "white" }} />
+            <IconLabelButton name="New Timesheet" onClick={() => setOpen(true)} icon={<PlusIcon />}/>
             <HyperlinkButton name="Open Timesheet" />
 
           </div>
