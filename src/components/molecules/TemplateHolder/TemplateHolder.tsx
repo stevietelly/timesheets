@@ -16,7 +16,7 @@ const TemplateHolder = (props: any) => {
       </div>
       <div className="flex" style={{ height: "20px", margin: "7px", justifyContent: "flex-end" }}>
 
-        <HyperlinkButton name="More templates" />
+        <HyperlinkButton name="More templates" onClick={()=>{}}/>
 
       </div>
     </div>
