@@ -1,5 +1,5 @@
 .IconButton{
-    border-radius: 2px;
+    border-radius: 3px;
     width: fit-content;
     display: flex;
     justify-content: center;
@@ -9,6 +9,7 @@
     margin: 1px;
     transition: 200ms ease-in-out;
     z-index: 0;
+    cursor: pointer;
 
     
 }
